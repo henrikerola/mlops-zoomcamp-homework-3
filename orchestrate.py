@@ -106,6 +106,20 @@ def train_best_model(
         mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
         mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
+
+        markdown_report = f"""
+        
+        # RMSE
+        {rmse:.2f}
+        
+        """
+
+        create_markdown_artifact(
+            key="rmsq-report",
+            markdown=markdown_report
+        )
+
+
     return None
 
 
